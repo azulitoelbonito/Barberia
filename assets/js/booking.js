@@ -117,18 +117,18 @@
   form.addEventListener('submit', e => {
     e.preventDefault();
     const missing = [];
-    if (!checked('service')) missing.push('a service');
-    if (!state.date) missing.push('a date');
-    else if (state.time === null) missing.push('a time');
+    if (!checked('service')) missing.push('el servicio');
+    if (!state.date) missing.push('la fecha');
+    else if (state.time === null) missing.push('la hora');
     ['bkName', 'bkPhone', 'bkEmail'].forEach(id => {
       const f = el(id), bad = !f.checkValidity();
       f.setAttribute('aria-invalid', bad);
-      if (bad) missing.push({ bkName: 'your name', bkPhone: 'your phone', bkEmail: 'a valid email' }[id]);
+      if (bad) missing.push({ bkName: 'tu nombre', bkPhone: 'tu teléfono', bkEmail: 'un correo electrónico válido' }[id]);
     });
-    if (missing.length) { showMsg('Please add ' + missing.join(', ') + ' to confirm your booking.', true); return; }
+    if (missing.length) { showMsg('Por favor añada ' + missing.join(', ') + ' para confirmar la reserva.', true); return; }
 
     // Demo only: there is no backend, so we show an error on purpose.
-    showMsg("Oops! Our booking system isn't working right now. Please call us at +1 (555) 789-2468 to reserve your spot.", true);
+    showMsg("No se pudo conectar con el servidor, Porfavor intente de nuevo mas tarde", true);
   });
 
   renderCalendar();
